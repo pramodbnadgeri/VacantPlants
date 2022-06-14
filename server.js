@@ -5,6 +5,7 @@ const app = express();
 const userRoute = require("./routes/user.route")
 app.use(express.json())  //to update query this line is necessary
 app.use(userRoute);
+const PORT = process.env.PORT || 3000;
 
 // const { Sequelize } = require('sequelize');
 
@@ -18,8 +19,8 @@ app.use(userRoute);
 // swaggerUi.setup(swaggerDocument)
 // );
 
-app.listen(3000, () => {
-    console.log("server running on 3000")
+app.listen(PORT, () => {
+    console.log("server running on" + PORT);
 });
 
 // const swaggerUi = require('swagger - ui - express'),
