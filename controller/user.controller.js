@@ -1,4 +1,7 @@
+const jwt_token = require('jwt-decode');
+
 const pool = require("../db")
+// const sequel = require("../user.model")
 var jwt = require("jsonwebtoken");
 
 const createUser = async function (req, res) {
@@ -25,9 +28,10 @@ const getAllUser = async (req, res) => {
 const getUserById = async (req, res) => {
 
     try {
-        const { id } = req.params;
-        const particularUser = await pool.query("SELECT * FROM users WHERE id=($1)", [id])
+        const { uid } = req.params;
+        const particularUser = await pool.query("SELECT * FROM users WHERE uid=($1)", [uid])
         res.json(particularUser.rows[0])
+        console.log(particularUser.rows[0]);
     } catch (error) {
         console.log(error.message);
     }
@@ -63,6 +67,16 @@ const checkSq = async (req, res) => {
                         reqSq: sq,
                         NoOfTrees: "8"
                     })
+                if (sq === "800")
+                    res.json({
+                        reqSq: sq,
+                        NoOfTrees: "10"
+                    })
+                if (sq === "1200")
+                    res.json({
+                        reqSq: sq,
+                        NoOfTrees: "12"
+                    })
             }
         });
 
@@ -75,7 +89,7 @@ const signIn = async (req, res) => {
     try {
         const { email, password } = req.body;
         const particularUser = await pool.query("SELECT * FROM users WHERE email=($1) AND password=($2)", [email, password])
-        var token = jwt.sign({ id: particularUser.rows[0].uid }, "secret", {
+        var token = jwt.sign({ uid: particularUser.rows[0].uid }, "secret", {
             expiresIn: 86400 // 24 hours
         });
         console.log(particularUser.rows[0]);

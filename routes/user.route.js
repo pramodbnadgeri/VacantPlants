@@ -8,15 +8,14 @@ router.post("/user", createUser)
 // /signin users
 router.post("/signIn", signIn)
 
-// /signin users
+// checking sq
 router.get("/checkSq/:sq", checkSq)
-
 
 //get all users
 router.get("/user", getAllUser)
 
 //get user by id
-router.get("/user/:id", getUserById)
+router.get("/user/:uid", getUserById)
 
 //update user
 router.put("/user/:id", updateUser)
