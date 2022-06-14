@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 // );
 
 app.listen(PORT, () => {
-    console.log("server running on" + PORT);
+    console.log("server running on " + PORT);
 });
 
 // const swaggerUi = require('swagger - ui - express'),
