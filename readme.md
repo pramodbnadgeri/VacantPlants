@@ -7,12 +7,9 @@
 
 - Make sure sequelize-cli is installed globally. If not, run `npm install -g sequelize-cli`
 - Create the appropriate model file, migration file, seed file
-- Run migration by `sequelize db:migrate`
-- Run seed by `sequelize db:seed:all`
+  This should create the table as well as populate seed content
 
-This should create the table as well as populate seed content
-
-# Shortcuts to generate migration file, seed and model
+# Steps to generate migration file, seed and model
 
 - `sequelize model:generate --name User --attributes username:string,email:string` -> This will generate both the model and migration files
 - `sequelize seed:generate --name User`
