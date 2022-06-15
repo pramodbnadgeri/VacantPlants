@@ -12,9 +12,17 @@
 
 This should create the table as well as populate seed content
 
-# Shortcuts to generate migration file and model
+# Shortcuts to generate migration file, seed and model
 
-- sequelize model:generate --name User --attributes username:string,email:string
-- sequelize seed:generate --name User
+- `sequelize model:generate --name User --attributes username:string,email:string` -> This will generate both the model and
+- `sequelize seed:generate` --name User
+
+# Running migration
+
+- `sequelize db:migrate`
+
+# Running seeds
+
+- `sequelize db:seed:all`
 
 Replace model name and attributes accordingly
