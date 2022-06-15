@@ -1,7 +1,7 @@
 - copy .env.example to .env and replace with actual values
 - make sure database is created and url is correct
-- run `yarn`
-- run `yarn start`
+- run `yarn` to install dependencies
+- run `yarn start` to start server
 
 # Steps to create a new table
 
