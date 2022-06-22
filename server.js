@@ -1,19 +1,44 @@
 const express = require("express");
-
-const app = express();
-// import swaggerui from 'swagger-ui-express'
-// import * as swaggerDocument from './swagger.json '
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 const userRoutes = require("./routes/user.route");
-const plantRoutes = require("./routes/user.route");
+const saplingsRoutes = require("./routes/saplings.route");
+const app = express();
 
 app.use(express.json()); //to update query this line is necessary
-app.use([userRoutes, plantRoutes]);
+app.use([userRoutes, saplingsRoutes]);
 
 const PORT = process.env.PORT || 3000;
 
+const options = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Library API",
+            version: "1.0.0",
+            description: "A simple Express Library API",
+        },
+        components: {
+            securitySchemes: {
+                Authorization: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                    value: "Bearer <JWT token here>"
+                }
+            }
+        },
+        servers: [
+            {
+                url: "http://localhost:3000",
+            },
+        ],
+    },
+    apis: ["./routes/*.js"],
+};
+
+const specs = swaggerJsDoc(options);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 app.listen(PORT, () => {
     console.log("server running on " + PORT);
 });
-
-// const swaggerUi = require('swagger - ui - express'),
-//     swaggerDocument = require('./swagger.json');

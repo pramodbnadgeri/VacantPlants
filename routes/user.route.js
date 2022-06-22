@@ -4,6 +4,7 @@
 // } from "../controller/user.controller.js";
 const express = require("express");
 const router = express.Router();
+const { getUserSites, getSitesById } = require("../controller/user_site.controller")
 const {
     getUsers,
     getUserById,
@@ -11,7 +12,8 @@ const {
     updateUser,
     deleteUser,
     signIn,
-    checkSq
+    checkSq,
+    // getUserSites,
 } = require("../controller/user.controller.js");
 
 /**
@@ -279,5 +281,64 @@ router.post("/signIn", signIn);
 
 //Route to check area size
 router.get("/checkSq/:sq", checkSq);
+
+
+
+/**
+ * @swagger
+ * /user_site/{id}:
+ *   get:
+ *     summary: Get the usersite
+ *     tags: [User_sites]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The usersite id
+ *     responses:
+ *       200:
+ *         description: The usersite description
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/user_sites'
+ *       404:
+ *         description: The user was not found
+ */
+
+
+
+
+router.get("/getUserSites", getUserSites);
+
+
+
+/**
+ * @swagger
+ * /user_site/{id}:
+ *   get:
+ *     summary: Get the usersite
+ *     tags: [User_sites]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The usersite id
+ *     responses:
+ *       200:
+ *         description: The usersite description by id
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/user_sites'
+ *       404:
+ *         description: The user was not found
+ */
+
+router.get("/getSitesById/:id", getSitesById);
 
 module.exports = router;

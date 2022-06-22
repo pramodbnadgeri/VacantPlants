@@ -11,8 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-    }
+      // user.hasMany(models.user_site, {
+      //   foreignKey: 'user_id',
+      //   as: 'users'
+      // });
+    };
   }
+  user.associate = function (models) {
+    user.hasMany(models.user_site, {
+      foreignKey: 'user_id',
+      as: 'user_sites'
+    });
+  };
   user.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,

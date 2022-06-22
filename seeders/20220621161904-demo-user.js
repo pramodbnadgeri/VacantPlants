@@ -64,7 +64,7 @@ module.exports = {
     );
 
     await queryInterface.bulkInsert(
-      'saplings',
+      'Saplings',
       [
         {
           site_id: 1,

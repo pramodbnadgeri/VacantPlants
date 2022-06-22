@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class location extends Model {
+  class Saplings extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,13 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  location.init({
-    name: DataTypes.STRING,
-    user_id: DataTypes.INTEGER,
-    size: DataTypes.STRING
+  Saplings.associate = function (models) {
+    Saplings.belongsTo(models.user_site, {
+      foreignKey: 'site_id'
+    });
+  };
+  Saplings.init({
+    site_id: DataTypes.INTEGER,
+    sapling_count: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'location',
+    modelName: 'Saplings',
   });
-  return location;
+  return Saplings;
 };

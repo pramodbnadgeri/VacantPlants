@@ -9,7 +9,12 @@ const user = require('../models/user')
 const getUsers = async (req, res) => {
     // console.log(user)
     try {
-        const users = await models.User.findAll({});
+        const users = await models.user.findAll({
+            include: [{
+                model: models.user_site,
+                as: 'user_sites'
+            }],
+        });
         console.log("users", users);
 
         return res.json(users);

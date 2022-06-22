@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "make-user-model": "npx sequelize-cli model:generate --name user --attributes name:string,email:string,password:string",
-    "make-user_site-model": "npx sequelize-cli model:generate --name user_site --attributes name:string,user_id:integer,dimension:integer,lattitude:integer,longitude:integer",
-    "make-saplings-model": "npx sequelize-cli model:generate --name saplings --attributes site_id:integer,sapling_count:integer",
+    "make-user_site-model": "npx sequelize-cli model:generate --name user_sites --attributes name:string,user_id:integer,dimension:integer,lattitude:integer,longitude:integer",
+    "make-saplings-model": "npx sequelize-cli model:generate --name Saplings --attributes site_id:integer,sapling_count:integer",
     "migrate": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate:undo",
     "make-seed": "npx sequelize-cli seed:generate --name demo-user",
