@@ -1,4 +1,5 @@
 const jwt_token = require("jwt-decode");
+var Pool = require('pg-pool')
 
 var jwt = require("jsonwebtoken");
 const models = require("../models");
@@ -78,6 +79,97 @@ const deleteUser = async (req, res) => {
 
 
 
+const signIn = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        // const particularUser = await models.user.findAll()
+        const user = await models.User.findOne({
+            where: {
+                email: email,
+                password: password
+            }
+        });
+        console.log(user.dataValues, "particularUser")
+        var token = jwt.sign({ id: user.dataValues.id }, "secret", {
+            expiresIn: 86400, // 24 hours
+        });
+        // console.log(particularUser.rows[0]);
+        res.json({
+            token: token,
+            user: user.dataValues,
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+
+
+const checkSq = async (req, res) => {
+    try {
+        const { sq } = req.params;
+        // console.log(sq);
+        // console.log(typeof (sq));
+        let token = req.headers["authorization"];
+
+        if (!token) {
+            return res.status(403).send({
+                message: "No token provided!",
+            });
+        }
+
+        const jwt_token = token.split(' ')[1];
+
+        jwt.verify(jwt_token, "secret", async (err, decoded) => {
+            if (err) {
+                return res.status(401).send({
+                    message: "Unauthorized!",
+                });
+            }
+            console.log(decoded);
+            const particularUser = await models.User.findOne(
+                {
+                    where:
+                    {
+                        id: decoded.id
+
+                    }
+                }
+            );
+            if (particularUser.dataValues) {
+                if (sq === "200")
+                    res.json({
+                        reqSq: sq,
+                        NoOfTrees: "4",
+                    });
+                if (sq === "400")
+                    res.json({
+                        reqSq: sq,
+                        NoOfTrees: "8",
+                    });
+                if (sq === "800")
+                    res.json({
+                        reqSq: sq,
+                        NoOfTrees: "10",
+                    });
+                if (sq === "1200")
+                    res.json({
+                        reqSq: sq,
+                        NoOfTrees: "12",
+                    });
+
+                res.json({
+                    reqSq: sq,
+                    NoOfTrees: "We are working on it",
+                });
+            }
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+
 
 
 
@@ -87,4 +179,6 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
+    signIn,
+    checkSq,
 };

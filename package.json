@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "make-model": "npx sequelize-cli model:generate --name user --attributes name:string,email:string,password:string",
-    "make-location-model": "npx sequelize-cli model:generate --name location --attributes name:string,user_id:integer,size:string",
+    "make-user-model": "npx sequelize-cli model:generate --name user --attributes name:string,email:string,password:string",
+    "make-user_site-model": "npx sequelize-cli model:generate --name user_site --attributes name:string,user_id:integer,dimension:integer,lattitude:integer,longitude:integer",
+    "make-saplings-model": "npx sequelize-cli model:generate --name saplings --attributes site_id:integer,sapling_count:integer",
     "migrate": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate:undo",
     "make-seed": "npx sequelize-cli seed:generate --name demo-user",
@@ -17,13 +18,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.20.1"
+    "pg-pool": "^3.5.1",
+    "sequelize": "^6.20.1",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.4.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
