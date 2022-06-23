@@ -1,4 +1,4 @@
-if (process.env.ENVRONMENT === 'local') {
+if (process.env.ENVIRONMENT === 'local') {
     require("dotenv").config();
 }
 
