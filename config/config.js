@@ -1,4 +1,6 @@
-require("dotenv").config();
+if (process.env.ENVRONMENT === 'local') {
+    require("dotenv").config();
+}
 
 module.exports = {
     development: {
