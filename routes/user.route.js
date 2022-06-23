@@ -317,10 +317,10 @@ router.get("/getUserSites", getUserSites);
 
 /**
  * @swagger
- * /user_site/{id}:
+ * /getSitesById/{id}:
  *   get:
- *     summary: Get the usersite
- *     tags: [User_sites]
+ *     summary: Get the userSite by id
+ *     tags: [Users]
  *     parameters:
  *       - in: path
  *         name: id
@@ -334,9 +334,9 @@ router.get("/getUserSites", getUserSites);
  *         contens:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/user_sites'
+ *               $ref: '#/components/schemas/user_site'
  *       404:
- *         description: The user was not found
+ *         description: The userSite was not found
  */
 
 router.get("/getSitesById/:id", getSitesById);
