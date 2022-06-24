@@ -31,7 +31,11 @@ const options = {
         servers: [
             {
                 url: "http://localhost:3000",
+
             },
+            {
+                url: "https://vacantplantsfinal.herokuapp.com",
+            }
         ],
     },
     apis: ["./routes/*.js"],

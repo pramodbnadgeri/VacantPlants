@@ -13,6 +13,25 @@ const createSapling = async (req, res) => {
     }
 }
 
+//get all saplings
+const getSap = async (req, res) => {
+    // console.log(user)
+    try {
+        const users = await models.Saplings.findAll({
+            include: [{
+                model: models.Saplings,
+                as: 'user_sites'
+            }],
+        });
+        console.log("users", users);
+
+        return res.json(users);
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+
 //get sap by id
 const getsapById = async (req, res) => {
     try {
