@@ -115,7 +115,8 @@ router.get("/user/:id", getUserById);
  *           type: password
  *           description: The user's password
  *       example:
- *         email: some name
+ *         name: some name
+ *         email: some email
  *         password: some password
  */
 
