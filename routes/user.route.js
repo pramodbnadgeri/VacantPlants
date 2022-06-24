@@ -74,24 +74,24 @@ router.get("/users", getUsers);
  * @swagger
  * /user/{id}:
  *   get:
- *     summary: Get the user by id
+ *     summary: gets user by id
  *     tags: [Users]
  *     parameters:
- *       - in: path
+ *       - in : path
  *         name: id
+ *         description: id of user
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
- *         description: The user id
  *     responses:
  *       200:
- *         description: The user description by id
- *         contens:
+ *         description: user by its id
+ *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Users'
- *       404:
- *         description: The user was not found
+ *               $ref: '#/components/schemas/User'
+ *       400:
+ *         description: post can not be found
  */
 
 //get individual user

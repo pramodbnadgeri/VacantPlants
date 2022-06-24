@@ -24,7 +24,7 @@ const options = {
                     type: "http",
                     scheme: "bearer",
                     bearerFormat: "JWT",
-                    value: "Bearer <JWT token here>"
+                    value: `Bearer {token}`
                 }
             }
         },
