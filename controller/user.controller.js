@@ -25,7 +25,7 @@ const getUsers = async (req, res) => {
 // Get user by id
 const getUserById = async (req, res) => {
     try {
-        const user = await models.User.findAll({
+        const user = await models.user.findAll({
             where: {
                 id: req.params.id
             }
