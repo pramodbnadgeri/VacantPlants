@@ -39,7 +39,7 @@ const getUserById = async (req, res) => {
 
 // Create a new user
 const createUser = async (req, res) => {
-    console.log(req.body);
+    console.log(req.body, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     try {
         const newuser = await models.user.create(req.body);
         console.log(newuser);
@@ -54,7 +54,7 @@ const createUser = async (req, res) => {
 // Update user by id
 const updateUser = async (req, res) => {
     try {
-        await models.User.update(req.body, {
+        await models.user.update(req.body, {
             where: {
                 id: req.params.id
             }
@@ -70,7 +70,7 @@ const updateUser = async (req, res) => {
 // Delete user by id
 const deleteUser = async (req, res) => {
     try {
-        await models.User.destroy({
+        await models.user.destroy({
             where: {
                 id: req.params.id
             }
@@ -89,7 +89,7 @@ const signIn = async (req, res) => {
     try {
         const { email, password } = req.body;
         // const particularUser = await models.user.findAll()
-        const user = await models.User.findOne({
+        const user = await models.user.findOne({
             where: {
                 email: email,
                 password: password
@@ -133,7 +133,7 @@ const checkSq = async (req, res) => {
                 });
             }
             console.log(decoded);
-            const particularUser = await models.User.findOne(
+            const particularUser = await models.user.findOne(
                 {
                     where:
                     {

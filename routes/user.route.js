@@ -257,7 +257,7 @@ router.post("/signIn", signIn);
 /**
 * @swagger
 * /checkSq/sq:
-*   post:
+*   get:
 *     security:
 *       - Authorization: []
 *     tags: [Users]
