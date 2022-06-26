@@ -39,8 +39,9 @@ const getUserById = async (req, res) => {
 
 // Create a new user
 const createUser = async (req, res) => {
+    console.log(req.body);
     try {
-        const newuser = await models.User.create(req.body);
+        const newuser = await models.user.create(req.body);
         console.log(newuser);
         res.json({
             "message": "user Created"
