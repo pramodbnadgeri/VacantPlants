@@ -105,9 +105,13 @@ router.get("/user/:id", getUserById);
  *     Users:
  *       type: object
  *       required:
+ *         - name
  *         - email
  *         - password
  *       properties:
+ *         name:
+ *           type: string
+ *           description: The user's name
  *         email:
  *           type: email
  *           description: The user's email
