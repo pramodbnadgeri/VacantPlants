@@ -4,6 +4,8 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const userRoutes = require("./routes/user.route");
 const saplingsRoutes = require("./routes/saplings.route");
 const app = express();
+var cors = require("cors");
+app.use(cors());
 
 app.use(express.json()); //to update query this line is necessary
 app.use([userRoutes, saplingsRoutes]);
