@@ -267,8 +267,9 @@ router.post("/signIn", signIn);
 *     tags: [Users]
 *     description: to suggest number of trees.
 *     parameters:
-*       - in: path
-*         name: sq
+*       
+*       - name: sq
+          in: query
 *         schema:
 *           type: string
 *         required: true
