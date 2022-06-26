@@ -135,7 +135,7 @@ router.get("/user/:id", getUserById);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/user'
+ *             $ref: '#/components/schemas/Users'
  *     responses:
  *       200:
  *         description: The user created successfully
