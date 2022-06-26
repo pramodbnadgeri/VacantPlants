@@ -260,7 +260,7 @@ router.post("/signIn", signIn);
 
 /**
 * @swagger
-* /checkSq/sq:
+* /checkSq/{sq}:
 *   get:
 *     security:
 *       - Authorization: []

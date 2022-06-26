@@ -29,3 +29,11 @@ const userRouteDoc = {
 };
 
 module.exports = userRouteDoc;
+
+
+
+
+// postman alli barthide ivag en madbeku
+//postman alli get method ide but swgger alli post ide
+// change madu
+//change madadru post ide
