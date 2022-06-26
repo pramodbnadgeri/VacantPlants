@@ -266,23 +266,23 @@ router.post("/signIn", signIn);
 *       - Authorization: []
 *     tags: [Users]
 *     description: to suggest number of trees.
- *     parameters:
- *       - in: path
- *         name: sq
- *         schema:
- *           type: string
- *         required: true
- *         description: To check sq
- *     responses:
- *       200:
- *         description: To check sq
- *         contens:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Users'
- *       402:
- *         description: User not logged in
- */
+*     parameters:
+*       - in: path
+*         name: sq
+*         schema:
+*           type: string
+*         required: true
+*         description: To check sq
+*     responses:
+*       200:
+*         description: To check sq
+*         contens:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Users'
+*       402:
+*         description: User not logged in
+*/
 
 //Route to check area size
 router.get("/checkSq/:sq", checkSq);
