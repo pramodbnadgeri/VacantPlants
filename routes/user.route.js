@@ -288,31 +288,22 @@ router.post("/signIn", signIn);
 router.get("/checkSq/:sq", checkSq);
 
 
-
 /**
  * @swagger
- * /user_site/{id}:
+ * /getUserSites:
  *   get:
- *     summary: Get the usersite
- *     tags: [User_sites]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: The usersite id
+ *     summary: Returns the list of all the users sites
+ *     tags: [Users]
  *     responses:
  *       200:
- *         description: The usersite description
- *         contens:
+ *         description: The list of the users
+ *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/user_sites'
- *       404:
- *         description: The user was not found
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/user_site'
  */
-
 
 
 
