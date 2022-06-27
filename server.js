@@ -31,12 +31,15 @@ const options = {
             }
         },
         servers: [
-            {
-                url: "http://localhost:3000",
+            // {
+            //     url: "http://localhost:3000",
 
-            },
+            // },
+            // {
+            //     url: "https://vacantplantsfinal.herokuapp.com",
+            // },
             {
-                url: "https://vacantplantsfinal.herokuapp.com",
+                url: process.env.SITE_URL
             }
         ],
     },
