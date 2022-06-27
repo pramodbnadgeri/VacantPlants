@@ -15,9 +15,8 @@ const getUsers = async (req, res) => {
                 as: 'user_sites'
             }],
         });
-        console.log("users", users);
-
-        return res.json(users);
+        // console.log("users", users);
+        return res.json(users).status(200);
     } catch (error) {
         console.log(error.message);
     }
@@ -25,13 +24,14 @@ const getUsers = async (req, res) => {
 // Get user by id
 const getUserById = async (req, res) => {
     try {
-        const user = await models.user.findAll({
+        const user = await models.user.findOne({
             where: {
                 id: req.params.id
             }
         });
-        res.send(user[0]);
+        res.send(user);
     } catch (err) {
+        res.json({ "error": err.message }).status(404)
         console.log(err);
     }
 }
@@ -39,7 +39,7 @@ const getUserById = async (req, res) => {
 
 // Create a new user
 const createUser = async (req, res) => {
-    console.log(req.body, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    // console.log(req.body, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     try {
         const newuser = await models.user.create(req.body);
         console.log(newuser);
@@ -110,7 +110,7 @@ const signIn = async (req, res) => {
 };
 
 
-
+// export const checkSq = async (req, res) => {
 const checkSq = async (req, res) => {
     try {
         const { sq } = req.params;
